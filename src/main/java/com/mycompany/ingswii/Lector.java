@@ -21,12 +21,8 @@ public class Lector {
     File file;
     BufferedReader br;
     FileReader fr;
-
-    public Lector(String ruta) throws FileNotFoundException{
-        file = new File(ruta);
-        fr = new FileReader(file);
-        br = new BufferedReader(fr);
-    }
+      String primeraLinea;
+   
     
     public Lector()throws FileNotFoundException{
         
@@ -38,11 +34,9 @@ public class Lector {
         br = new BufferedReader(fr);
     }
 
-    public String leerLineaArchivo() throws IOException{
-        String res = br.readLine();
-        br.close();
-        return res;
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private  String leerLineaArchivo() throws IOException{
+       primeraLinea=br.readLine();
+       return primeraLinea;
     }
     
     public String leerInstrucciones()throws IOException{
@@ -54,5 +48,16 @@ public class Lector {
         }
         br.close();
         return res;
+    }
+
+    
+    public Coordenada getCoordenadaInicial() throws IOException {
+        if(primeraLinea==null)
+            leerLineaArchivo();
+        String coo[]=this.primeraLinea.split(" ");
+        int x=Integer.parseInt(coo[0]);
+        int y=Integer.parseInt(coo[1]);
+
+        return new Coordenada(x,y);
     }
 }

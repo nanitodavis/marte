@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 
+import com.mycompany.ingswii.Coordenada;
 import com.mycompany.ingswii.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import org.testng.Assert;
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
 
@@ -31,28 +33,21 @@ public class Pruebas {
         x.cargarArchivo("src/main/resources/reglas.txt");
     }
     
+ 
+    
     @Test
-    public void leerArchivo() throws FileNotFoundException, IOException{
+    public void laCoordenadaInicialEsCorrecta() throws FileNotFoundException, IOException{
+        Coordenada esperada=new Coordenada(7,6);
         Lector x = new Lector();
         x.cargarArchivo("src/main/resources/reglas.txt");
-        String dimenciones = x.leerLineaArchivo();
+        Coordenada c=x.getCoordenadaInicial();
+        Assert.assertEquals(c,esperada);
     }
     
     @Test
-    public void crearTablero() throws FileNotFoundException, IOException{
-        Lector x = new 
-        Lector("/home/clave-e205/Escritorio/tablero.txt");
-        Tablero tablero = new Tablero();
-        tablero.crearTablero(x);
+    public void crearElTableroConLasCoordenadasIniciales(){
+        
     }
     
-    @Test
-    public void posicionRobotEnTablero()throws FileNotFoundException, IOException{
-        Robot robot = new Robot();
-        Tablero tablero = new Tablero();
-        Lector lector = new Lector("/home/clave-e205/Escritorio/tablero.txt");
-        Marte marte = new Marte(lector);
-        marte.ponerRobot();
-    }
-    
+   
 }
