@@ -21,12 +21,12 @@ public class Lector {
     File file;
     BufferedReader br;
     FileReader fr;
-      String primeraLinea;
-   
+    String linea;
     
     public Lector()throws FileNotFoundException{
         
     }
+    
     public void cargarArchivo(String ruta) throws FileNotFoundException {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         file = new File(ruta);
@@ -35,8 +35,8 @@ public class Lector {
     }
 
     private  String leerLineaArchivo() throws IOException{
-       primeraLinea=br.readLine();
-       return primeraLinea;
+       linea=br.readLine();
+       return linea;
     }
     
     public String leerInstrucciones()throws IOException{
@@ -52,12 +52,24 @@ public class Lector {
 
     
     public Coordenada getCoordenadaInicial() throws IOException {
-        if(primeraLinea==null)
-            leerLineaArchivo();
-        String coo[]=this.primeraLinea.split(" ");
+        if(linea==null)
+        leerLineaArchivo();
+        String coo[]=this.linea.split(" ");
         int x=Integer.parseInt(coo[0]);
         int y=Integer.parseInt(coo[1]);
 
         return new Coordenada(x,y);
     }
+      
+    public PosicionRobot getPosicionRobot() throws IOException{
+        if (linea.toCharArray().length!=5){
+            leerLineaArchivo();
+        }
+        String pr [] = this.linea.split(" ");
+        int x=Integer.parseInt(pr[0]);
+        int y=Integer.parseInt(pr[1]);
+        char a = pr[2].charAt(0);
+        return new PosicionRobot(x, y, a);   
+    }
+    
 }
