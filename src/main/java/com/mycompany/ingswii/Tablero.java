@@ -10,11 +10,11 @@ package com.mycompany.ingswii;
  *
  * @author clave-e205
  */
-public class Coordenada {
+public class Tablero {
 
     int x;
     int y;
-    public Coordenada(int x, int y) {
+    public Tablero(int x, int y) {
         this.x=x;
         this.y=y;
     }
@@ -22,8 +22,8 @@ public class Coordenada {
     @Override
     public boolean equals(Object obj) {
         if(obj == null) return false;
-        if(!(obj instanceof Coordenada))return false;
-        Coordenada tmp=(Coordenada)obj;
+        if(!(obj instanceof Tablero))return false;
+        Tablero tmp=(Tablero)obj;
         return (this.x==tmp.x && this.y==tmp.y);
     }
     

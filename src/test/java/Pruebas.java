@@ -6,7 +6,7 @@
 
 import com.mycompany.ingswii.Instrucciones;
 import com.mycompany.ingswii.PosicionRobot;
-import com.mycompany.ingswii.Coordenada;
+import com.mycompany.ingswii.Tablero;
 import com.mycompany.ingswii.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -39,10 +39,10 @@ public class Pruebas {
     
     @Test
     public void laCoordenadaInicialEsCorrecta() throws FileNotFoundException, IOException{
-        Coordenada esperada=new Coordenada(7,6);
+        Tablero esperada=new Tablero(7,6);
         Lector x = new Lector();
         x.cargarArchivo("src/main/resources/reglas.txt");
-        Coordenada c=x.getCoordenadaInicial();
+        Tablero c=x.getCoordenadaInicial();
         Assert.assertEquals(c,esperada);
     }
     
@@ -56,11 +56,11 @@ public class Pruebas {
     }
     
     @Test
-    public void instruccionesParaMoverElRobot() throws FileNotFoundException{
+    public void instruccionesParaMoverElRobot() throws FileNotFoundException, IOException{
         Instrucciones esperada = new Instrucciones ("IAIAIAIAA");
         Lector x = new Lector();
         x.cargarArchivo("src/main/resources/reglas.txt");
-        Instrucciones obtenida = x.getInstruciones ();
+        Instrucciones obtenida = x.getInstruciones();
         Assert.assertEquals(esperada, obtenida);
     }
     

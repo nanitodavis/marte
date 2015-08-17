@@ -23,6 +23,11 @@ public class Instrucciones {
         if(obj == null) return false;
         if(!(obj instanceof Instrucciones))return false;
         Instrucciones tmp=(Instrucciones)obj;
-        return (this.cadenaInstruccion==tmp.cadenaInstruccion);
+        return ((this.cadenaInstruccion).equals(tmp.cadenaInstruccion));
+    }
+    
+    @Override
+    public String toString(){
+        return cadenaInstruccion;
     }
 }

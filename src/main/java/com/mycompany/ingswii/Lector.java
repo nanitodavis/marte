@@ -51,14 +51,14 @@ public class Lector {
     }
 
     
-    public Coordenada getCoordenadaInicial() throws IOException {
+    public Tablero getCoordenadaInicial() throws IOException {
         if(linea==null)
         leerLineaArchivo();
         String coo[]=this.linea.split(" ");
         int x=Integer.parseInt(coo[0]);
         int y=Integer.parseInt(coo[1]);
 
-        return new Coordenada(x,y);
+        return new Tablero(x,y);
     }
       
     public PosicionRobot getPosicionRobot() throws IOException{
@@ -67,10 +67,13 @@ public class Lector {
                leerLineaArchivo();
                 cont++;
             }
-             else if ((linea.toCharArray().length!=5) && (linea.charAt(0)!='I')&& (linea.charAt(0)!='D')&& (linea.charAt(0)!='A')){
-                leerLineaArchivo();
-                cont=100000;
+             else if (!((linea.charAt(0)=='I')|| (linea.charAt(0)=='D')|| (linea.charAt(0)=='A'))&&linea.toCharArray().length==5){
+                 cont=100000;
             }
+             else{
+                leerLineaArchivo();
+                cont++;
+             }
         }
         String pr [] = this.linea.split(" ");
         int x=Integer.parseInt(pr[0]);
@@ -79,8 +82,23 @@ public class Lector {
         return new PosicionRobot(x, y, 'N');   
     }
 
-    public Instrucciones getInstruciones() {
-        return new Instrucciones("IAIAIAIAA");
+    public Instrucciones getInstruciones() throws IOException {
+        
+        for(int cont=0;cont<100000;cont++){
+            if(linea==null){
+               leerLineaArchivo();
+                cont++;
+            }
+             else if ((linea.charAt(0)=='I')|| (linea.charAt(0)=='D')|| (linea.charAt(0)=='A')){
+                 cont=100000;
+             }
+             else{
+                leerLineaArchivo();
+                cont++;
+             }
+        }
+        String s = linea;
+        return new Instrucciones(s);
     }
     
 }
