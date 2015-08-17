@@ -11,10 +11,12 @@ package com.mycompany.ingswii;
  * @author nanito
  */
 public class Instrucciones {
-    String cadenaInstruccion;
+    char [] cadenaInstruccion;
+    int posActual;
     
     public Instrucciones(String s){
-        cadenaInstruccion=s;
+        cadenaInstruccion=s.toCharArray();
+        posActual=0;
     }
     
     
@@ -28,6 +30,18 @@ public class Instrucciones {
     
     @Override
     public String toString(){
-        return cadenaInstruccion;
+        String res="";
+        for(int cont=0;cont<cadenaInstruccion.length;cont++){
+            res+=cadenaInstruccion[0];
+        }
+        return res;
+    }
+
+    char getInstruccion() {
+        char res = 'Q';
+        if(posActual<cadenaInstruccion.length)
+            res = cadenaInstruccion[posActual];
+        posActual++;
+        return res;
     }
 }

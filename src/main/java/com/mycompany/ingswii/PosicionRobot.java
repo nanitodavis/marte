@@ -28,5 +28,60 @@ public class PosicionRobot {
         PosicionRobot tmp=(PosicionRobot)obj;
         return (this.x==tmp.x && this.y==tmp.y && apunta==tmp.apunta);
     }
+
+    public void moverRobot(Instrucciones i) {
+        char instruccionActual= i.getInstruccion();
+        for(int cont=0;cont<i.cadenaInstruccion.length;cont++){
+            if(instruccionActual=='I'){
+                switch (apunta){
+                    case 'N':
+                        apunta='O';
+                        break;
+                    case 'S':
+                        apunta='E';
+                        break;
+                    case 'E':
+                        apunta='N';
+                        break;
+                    case 'O':
+                        apunta='S';
+                        break;
+                }
+            }
+            else if(instruccionActual=='D'){
+                switch (apunta){
+                    case 'N':
+                        apunta='E';
+                        break;
+                    case 'S':
+                        apunta='O';
+                        break;
+                    case 'E':
+                        apunta='S';
+                        break;
+                    case 'O':
+                        apunta='N';
+                        break;
+                }
+            }
+            else if(instruccionActual=='A'){
+                switch (apunta){
+                    case 'N':
+                        y+=1;
+                        break;
+                    case 'S':
+                        y-=1;
+                        break;
+                    case 'E':
+                        x+=1;
+                        break;
+                    case 'O':
+                        x-=1;
+                        break;
+                }
+            }
+           instruccionActual=i.getInstruccion();
+        }
+    }
     
 }

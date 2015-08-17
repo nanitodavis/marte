@@ -66,19 +66,17 @@ public class Pruebas {
     }
     
     @Test
-    public void convertirInstruccionesEnMovimientosDelRobot() throws FileNotFoundException{
-        Tablero t = new Tablero(7, 6);
-        PosicionRobot r = new PosicionRobot(1,2,'N');
-        Instrucciones i = new Instrucciones("IAIAIAIAA");
-        Marte marte = new Marte();
-        Lector x = new Lector();
-        x.cargarArchivo("src/main/resources/reglas.txt");
-        marte.cargarTablero(t);
-        marte.cargarRobot(r);
-        marte.cargarInstrucciones(i);
-        marte.moverRobot();
-        //Assert.assertEquals(, obtenida);
+    public void moverAlRobotMedianteInstrucciones(){
+        PosicionRobot posicionFinal = new PosicionRobot(5, 1, 'E');
+        Instrucciones i = new Instrucciones ("AADAADADDA");
+        PosicionRobot r = new PosicionRobot (3, 3, 'E');
+        r.moverRobot(i);
+        Assert.assertEquals(posicionFinal, r);   
     }
     
+    /*@Test
+    public void validarNoMoverseFueraDelTablero(){
+        
+    }*/
    
 }
