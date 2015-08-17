@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import com.mycompany.ingswii.Marte;
 import com.mycompany.ingswii.Instrucciones;
 import com.mycompany.ingswii.PosicionRobot;
 import com.mycompany.ingswii.Tablero;
@@ -62,6 +63,21 @@ public class Pruebas {
         x.cargarArchivo("src/main/resources/reglas.txt");
         Instrucciones obtenida = x.getInstruciones();
         Assert.assertEquals(esperada, obtenida);
+    }
+    
+    @Test
+    public void convertirInstruccionesEnMovimientosDelRobot() throws FileNotFoundException{
+        Tablero t = new Tablero(7, 6);
+        PosicionRobot r = new PosicionRobot(1,2,'N');
+        Instrucciones i = new Instrucciones("IAIAIAIAA");
+        Marte marte = new Marte();
+        Lector x = new Lector();
+        x.cargarArchivo("src/main/resources/reglas.txt");
+        marte.cargarTablero(t);
+        marte.cargarRobot(r);
+        marte.cargarInstrucciones(i);
+        marte.moverRobot();
+        //Assert.assertEquals(, obtenida);
     }
     
    
