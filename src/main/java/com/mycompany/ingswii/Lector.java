@@ -62,7 +62,7 @@ public class Lector {
     }
       
     public PosicionRobot getPosicionRobot() throws IOException{
-        if (linea.toCharArray().length!=5){
+        if ((linea.toCharArray().length!=5) && (linea.charAt(0)!='I')&& (linea.charAt(0)!='D')&& (linea.charAt(0)!='A')){
             leerLineaArchivo();
         }
         String pr [] = this.linea.split(" ");
