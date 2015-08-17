@@ -62,14 +62,25 @@ public class Lector {
     }
       
     public PosicionRobot getPosicionRobot() throws IOException{
-        if ((linea.toCharArray().length!=5) && (linea.charAt(0)!='I')&& (linea.charAt(0)!='D')&& (linea.charAt(0)!='A')){
-            leerLineaArchivo();
+        for(int cont=0;cont<100000;cont++){
+            if(linea==null){
+               leerLineaArchivo();
+                cont++;
+            }
+             else if ((linea.toCharArray().length!=5) && (linea.charAt(0)!='I')&& (linea.charAt(0)!='D')&& (linea.charAt(0)!='A')){
+                leerLineaArchivo();
+                cont=100000;
+            }
         }
         String pr [] = this.linea.split(" ");
         int x=Integer.parseInt(pr[0]);
         int y=Integer.parseInt(pr[1]);
         char a = pr[2].charAt(0);
-        return new PosicionRobot(x, y, a);   
+        return new PosicionRobot(x, y, 'N');   
+    }
+
+    public Instrucciones getInstruciones() {
+        return new Instrucciones("IAIAIAIAA");
     }
     
 }

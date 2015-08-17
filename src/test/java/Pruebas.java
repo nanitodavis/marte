@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import com.mycompany.ingswii.Instrucciones;
 import com.mycompany.ingswii.PosicionRobot;
 import com.mycompany.ingswii.Coordenada;
 import com.mycompany.ingswii.*;
@@ -42,7 +43,7 @@ public class Pruebas {
         Lector x = new Lector();
         x.cargarArchivo("src/main/resources/reglas.txt");
         Coordenada c=x.getCoordenadaInicial();
-        //Assert.assertEquals(c,esperada);
+        Assert.assertEquals(c,esperada);
     }
     
     @Test
@@ -55,8 +56,12 @@ public class Pruebas {
     }
     
     @Test
-    public void instruccionesParaMoverElRobot(){
-        
+    public void instruccionesParaMoverElRobot() throws FileNotFoundException{
+        Instrucciones esperada = new Instrucciones ("IAIAIAIAA");
+        Lector x = new Lector();
+        x.cargarArchivo("src/main/resources/reglas.txt");
+        Instrucciones obtenida = x.getInstruciones ();
+        Assert.assertEquals(esperada, obtenida);
     }
     
    
