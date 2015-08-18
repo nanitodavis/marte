@@ -67,22 +67,11 @@ public class Pruebas {
     
     @Test
     public void moverAlRobotMedianteInstrucciones(){
+        Tablero t = new Tablero(6, 7);
         PosicionRobot posicionFinal = new PosicionRobot(5, 1, 'E');
         Instrucciones i = new Instrucciones ("AADAADADDA");
         PosicionRobot r = new PosicionRobot (3, 3, 'E');
-        r.moverRobot(i);
+        r.moverRobot(i, t);
         Assert.assertEquals(posicionFinal, r);   
-    }
-    
-    @Test 
-    public void verificarQueElRobotNoSalgaDelTablero(){
-        PosicionRobot r = new PosicionRobot( 7, 2, 'N');
-        Tablero t = new Tablero (6, 7);
-        if(!r.sePuedeMover(t)){
-            Assert.assertNotSame(t.x, r.x);
-        }
-        else{
-            Assert.assertEquals(t.x, r.x);
-        }
-    }
+    }   
 }

@@ -14,7 +14,7 @@ public class Marte {
     Tablero tablero;
     PosicionRobot robot;
     Instrucciones instruccion;
-    String respuesta;
+    String respuesta= " ";
 
     public void cargarTablero(Tablero t) {
         tablero = t;
@@ -29,6 +29,11 @@ public class Marte {
     }
 
     public void moverRobot() {
-        
+        robot.moverRobot(instruccion, tablero);
+        respuesta = robot.toString();
+    }
+    
+    public String verRespuesta(){
+        return respuesta;
     }
 }

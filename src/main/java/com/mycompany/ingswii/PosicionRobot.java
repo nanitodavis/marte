@@ -29,7 +29,7 @@ public class PosicionRobot {
         return (this.x==tmp.x && this.y==tmp.y && apunta==tmp.apunta);
     }
 
-    public void moverRobot(Instrucciones i) {
+    public void moverRobot(Instrucciones i, Tablero t) {
         char instruccionActual= i.getInstruccion();
         for(int cont=0;cont<i.cadenaInstruccion.length;cont++){
             if(instruccionActual=='I'){
@@ -67,28 +67,33 @@ public class PosicionRobot {
             else if(instruccionActual=='A'){
                 switch (apunta){
                     case 'N':
-                        y+=1;
+                        if(t.y>=(this.y+1)){
+                            this.y+=1;
+                        }
                         break;
                     case 'S':
-                        y-=1;
+                        if(0<=(this.y-1)){
+                            this.y-=1;
+                        }
                         break;
                     case 'E':
-                        x+=1;
+                        if(t.x>=(this.x+1)){
+                            this.x+=1;
+                        }
                         break;
                     case 'O':
-                        x-=1;
+                        if(0<=(this.x-1)){
+                            this.x-=1;
+                        }
                         break;
                 }
             }
            instruccionActual=i.getInstruccion();
         }
-    }
-
-    public boolean sePuedeMover(Tablero t){
-        if(t.x<=(this.x+1)||t.x<=(this.x+1))
-            if(t.y<=(this.y+1)||t.y<=(this.y+1))
-                return true;
-        return false;
-    }
+    } 
     
+    @Override
+    public String toString(){
+        return x+" "+y+" "+apunta;
+    }
 }

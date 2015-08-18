@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -99,6 +100,16 @@ public class Lector {
         }
         String s = linea;
         return new Instrucciones(s);
+    }
+    
+    public int numeroLineas() throws FileNotFoundException{
+        Scanner s = new Scanner(file);
+        int totalLineas = 0;
+        while(s.hasNextLine()){
+            totalLineas ++;
+            System.out.println(totalLineas);
+        }
+        return totalLineas;
     }
     
 }
