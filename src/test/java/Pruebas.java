@@ -74,9 +74,15 @@ public class Pruebas {
         Assert.assertEquals(posicionFinal, r);   
     }
     
-    /*@Test
-    public void validarNoMoverseFueraDelTablero(){
-        
-    }*/
-   
+    @Test 
+    public void verificarQueElRobotNoSalgaDelTablero(){
+        PosicionRobot r = new PosicionRobot( 7, 2, 'N');
+        Tablero t = new Tablero (6, 7);
+        if(!r.sePuedeMover(t)){
+            Assert.assertNotSame(t.x, r.x);
+        }
+        else{
+            Assert.assertEquals(t.x, r.x);
+        }
+    }
 }

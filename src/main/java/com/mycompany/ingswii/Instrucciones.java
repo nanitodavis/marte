@@ -22,10 +22,21 @@ public class Instrucciones {
     
     @Override
     public boolean equals(Object obj) {
+        boolean res=false;
         if(obj == null) return false;
         if(!(obj instanceof Instrucciones))return false;
         Instrucciones tmp=(Instrucciones)obj;
-        return ((this.cadenaInstruccion).equals(tmp.cadenaInstruccion));
+        for(int cont=0;cont<=tmp.cadenaInstruccion.length;cont++){
+            if(this.cadenaInstruccion[cont]==tmp.cadenaInstruccion[cont]){
+                 if(this.cadenaInstruccion.length==tmp.cadenaInstruccion.length){
+                    return true;
+            }
+            }
+            else if(this.cadenaInstruccion[cont]!=tmp.cadenaInstruccion[cont]){
+                return false;
+            }
+        }
+        return (res);
     }
     
     @Override

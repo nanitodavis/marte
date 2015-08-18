@@ -11,8 +11,8 @@ package com.mycompany.ingswii;
  * @author clave-e205
  */
 public class PosicionRobot {
-    int x;
-    int y;
+    public int x;
+    public int y;
     char apunta;
 
     public PosicionRobot(int x, int y, char apun) {
@@ -82,6 +82,13 @@ public class PosicionRobot {
             }
            instruccionActual=i.getInstruccion();
         }
+    }
+
+    public boolean sePuedeMover(Tablero t){
+        if(t.x<=(this.x+1)||t.x<=(this.x+1))
+            if(t.y<=(this.y+1)||t.y<=(this.y+1))
+                return true;
+        return false;
     }
     
 }
