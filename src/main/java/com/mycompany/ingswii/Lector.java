@@ -101,15 +101,9 @@ public class Lector {
         String s = linea;
         return new Instrucciones(s);
     }
-    
-    public int numeroLineas() throws FileNotFoundException{
-        Scanner s = new Scanner(file);
-        int totalLineas = 0;
-        while(s.hasNextLine()){
-            totalLineas ++;
-            System.out.println(totalLineas);
-        }
-        return totalLineas;
+
+    public boolean hayMasLineas() {
+        return true;
     }
     
 }
