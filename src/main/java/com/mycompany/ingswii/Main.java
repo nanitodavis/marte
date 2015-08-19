@@ -19,10 +19,12 @@ public class Main {
         Lector lector = new Lector();
         lector.cargarArchivo("src/main/resources/reglas.txt");
         marte.cargarTablero(lector.getCoordenadaInicial());
+        for(int cont=1;cont<lector.totalLineas;cont+=2){
         marte.cargarRobot(lector.getPosicionRobot());
         marte.cargarInstrucciones(lector.getInstruciones());
         marte.moverRobot();
         System.out.println(marte.verRespuesta());
+        }
     }
     
 }

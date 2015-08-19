@@ -95,6 +95,5 @@ public class Pruebas {
                 Assert.assertEquals(esperada, r);  
             }
         }
-        
     }
 }
