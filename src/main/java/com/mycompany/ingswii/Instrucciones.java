@@ -43,7 +43,7 @@ public class Instrucciones {
     public String toString(){
         String res="";
         for(int cont=0;cont<cadenaInstruccion.length;cont++){
-            res+=cadenaInstruccion[0];
+            res+=cadenaInstruccion[cont];
         }
         return res;
     }

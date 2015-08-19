@@ -31,7 +31,7 @@ public class Pruebas {
     // public void hello() {}
 
     @Test
-    public void archivoExiste()throws FileNotFoundException{
+    public void archivoExiste()throws FileNotFoundException, IOException{
         Lector x = new Lector();
         x.cargarArchivo("src/main/resources/reglas.txt");
     }
@@ -76,25 +76,24 @@ public class Pruebas {
     }   
     
     @Test
-    public void leerYEjecutrTodoElArchivo() throws FileNotFoundException{
+    public void leerYEjecutrTodoElArchivo() throws FileNotFoundException, IOException{
         Lector x = new Lector();
         x.cargarArchivo("src/main/resources/reglas.txt");
-        PosicionRobot esperada = new PosicionRobot(1, 3, 'N');
-        PosicionRobot esperada2 = new PosicionRobot(5, 1, 'E');
-        Tablero t = new Tablero (6, 7);
-        Instrucciones i1 = new Instrucciones("IAIAIAIAA");
-        Instrucciones i2 = new Instrucciones("AADAADADDA");
-        PosicionRobot r = new PosicionRobot(1, 2, 'N');
-        if(x.hayMasLineas()){
-            r.moverRobot(i1, t);
-            Assert.assertEquals(esperada, r);
-        }
-        
-        r = new PosicionRobot(3, 3, 'E');
-        
-        if(x.hayMasLineas()){
-            r.moverRobot(i2, t);
-            Assert.assertEquals(esperada2, r);
+        Tablero t = x.getCoordenadaInicial();
+        Instrucciones i;
+        PosicionRobot r;
+        for(int cont = 1;cont<x.numeroLineas();cont+=2){
+            r=x.getPosicionRobot();
+            i=x.getInstruciones();
+            r.moverRobot(i, t);
+            if(cont==1){
+                PosicionRobot esperada= new PosicionRobot(1, 3, 'N');
+                Assert.assertEquals(esperada, r);  
+            }
+            else if (cont==3){
+                PosicionRobot esperada= new PosicionRobot(5, 1, 'E');
+                Assert.assertEquals(esperada, r);  
+            }
         }
         
     }

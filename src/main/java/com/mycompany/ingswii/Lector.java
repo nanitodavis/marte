@@ -23,16 +23,18 @@ public class Lector {
     BufferedReader br;
     FileReader fr;
     String linea;
+    int totalLineas;
     
     public Lector()throws FileNotFoundException{
         
     }
     
-    public void cargarArchivo(String ruta) throws FileNotFoundException {
+    public void cargarArchivo(String ruta) throws FileNotFoundException, IOException {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         file = new File(ruta);
         fr = new FileReader(file);
         br = new BufferedReader(fr);
+        totalLineas=this.numeroLineas();
     }
 
     private  String leerLineaArchivo() throws IOException{
@@ -40,14 +42,16 @@ public class Lector {
        return linea;
     }
     
-    public String leerInstrucciones()throws IOException{
-        String res = "";
+    public int numeroLineas()throws IOException{
+        FileReader f = new FileReader(file);
+        BufferedReader p = new BufferedReader(f);
+        int res = 0;
         String probar=null;
-        probar = br.readLine();
-        for(;(probar=br.readLine()) != null;){
-            res+=probar+"\n";
+        probar = p.readLine();
+        res+=1;
+        for(;(probar=p.readLine()) != null;){
+            res+=1;
         }
-        br.close();
         return res;
     }
 
@@ -80,7 +84,7 @@ public class Lector {
         int x=Integer.parseInt(pr[0]);
         int y=Integer.parseInt(pr[1]);
         char a = pr[2].charAt(0);
-        return new PosicionRobot(x, y, 'N');   
+        return new PosicionRobot(x, y, a);   
     }
 
     public Instrucciones getInstruciones() throws IOException {
@@ -102,8 +106,12 @@ public class Lector {
         return new Instrucciones(s);
     }
 
-    public boolean hayMasLineas() {
-        return true;
+    public boolean hayMasLineas() throws FileNotFoundException {
+        boolean hayLineas = false;
+        Scanner s = new Scanner(fr);
+        if(s.hasNextLine())
+            hayLineas=true;
+        return hayLineas;
     }
     
 }
